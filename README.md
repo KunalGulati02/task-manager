@@ -1,33 +1,24 @@
 # Task Manager
 
-A full-stack task management application where teams can create projects, assign tasks, and track progress.
-Includes role-based access control (Admin/Member) and a dashboard for task insights and overdue tracking.
-
----
+A full-stack task management app where teams can create projects, assign tasks, and track progress with role-based access control (Admin/Member).
 
 ## Features
 
-* **Authentication** — Signup/Login with JWT
-* **Role-based access** — Admin and Member roles
-* **Projects** — Create and manage projects, add/remove members
-* **Tasks** — Create tasks, assign to members, track status
-* **Dashboard** — View assigned tasks, overdue alerts, status counts
+- Authentication with JWT
+- Role-based access (Admin and Member)
+- Create and manage projects with team members
+- Create tasks, assign to members, and track status
+- Dashboard showing assigned tasks, overdue alerts, and status counts
 
-### Role Behavior
-
-* **Admin** can create projects, manage members, and assign tasks
-* **Member** can view assigned projects and update task status
-
----
+**Admin** can create projects, manage members, and assign tasks.
+**Member** can view their assigned projects and update task status.
 
 ## Tech Stack
 
-* **Frontend** — React (Vite), React Router, Axios
-* **Backend** — Node.js, Express
-* **Database** — PostgreSQL
-* **Auth** — JWT in HTTP-only cookies
-
----
+- Frontend: React (Vite), React Router, Axios
+- Backend: Node.js, Express
+- Database: PostgreSQL
+- Auth: JWT stored in HTTP-only cookies
 
 ## Project Structure
 
@@ -54,28 +45,24 @@ task-manager/
             └── Header.jsx
 ```
 
----
-
 ## API Endpoints
 
-| Method | Endpoint                          | Access |
-| ------ | --------------------------------- | ------ |
-| POST   | /api/auth/signup                  | Public |
-| POST   | /api/auth/login                   | Public |
-| POST   | /api/auth/logout                  | Public |
-| GET    | /api/projects                     | Auth   |
-| POST   | /api/projects                     | Admin  |
-| GET    | /api/projects/:id                 | Auth   |
-| DELETE | /api/projects/:id                 | Admin  |
-| POST   | /api/projects/:id/members         | Admin  |
-| DELETE | /api/projects/:id/members/:userId | Admin  |
-| POST   | /api/tasks                        | Admin  |
-| PUT    | /api/tasks/:id/status             | Auth   |
-| DELETE | /api/tasks/:id                    | Admin  |
-| GET    | /api/tasks/dashboard              | Auth   |
-| GET    | /api/users                        | Admin  |
-
----
+| Method | Endpoint | Access |
+|--------|----------|--------|
+| POST | /api/auth/signup | Public |
+| POST | /api/auth/login | Public |
+| POST | /api/auth/logout | Public |
+| GET | /api/projects | Auth |
+| POST | /api/projects | Admin |
+| GET | /api/projects/:id | Auth |
+| DELETE | /api/projects/:id | Admin |
+| POST | /api/projects/:id/members | Admin |
+| DELETE | /api/projects/:id/members/:userId | Admin |
+| POST | /api/tasks | Admin |
+| PUT | /api/tasks/:id/status | Auth |
+| DELETE | /api/tasks/:id | Admin |
+| GET | /api/tasks/dashboard | Auth |
+| GET | /api/users | Admin |
 
 ## Database Schema
 
@@ -115,8 +102,6 @@ CREATE TABLE tasks (
 );
 ```
 
----
-
 ## Local Setup
 
 ```bash
@@ -126,50 +111,41 @@ cd task-manager
 
 # Backend
 cd backend
-cp .env.example .env   # fill in your values
+cp .env.example .env
 npm install
 npm run dev
 
-# Frontend (new terminal)
+# Frontend (separate terminal)
 cd frontend
 npm install
 npm run dev
 ```
 
----
-
 ## Environment Variables
 
 ```
 DATABASE_URL=postgresql://user:password@localhost:5432/team-task
-JWT_SECRET= secret_key
+JWT_SECRET=your_secret_key
 NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 PORT=5000
 ```
 
----
+In production, Railway sets DATABASE_URL automatically.
 
 ## Deployment
 
-Deployed on Railway as a single service (Express serves React build in production).
-
----
+Deployed on Railway. Express serves the React build in production so it runs as a single service.
 
 ## Demo Credentials
 
 Admin:
-
-* Email: [admin@test.com](mailto:admin@test.com)
-* Password: password123
+- Email: admin@test.com
+- Password: password123
 
 Member:
-
-* Email: [user@test.com](mailto:user@test.com)
-* Password: password123
-
----
+- Email: user@test.com
+- Password: password123
 
 ## Live Demo
-
 https://task-manager-production-f3a3.up.railway.app/dashboard
