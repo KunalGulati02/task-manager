@@ -198,7 +198,7 @@ export default function ProjectDetail() {
                       <th>Assigned To</th>
                       <th>Status</th>
                       <th>Due Date</th>
-                      <th>Actions</th>
+                      {user?.role === 'admin' && <th>Actions</th>}
                     </tr>
                   </thead>
                   <tbody>
