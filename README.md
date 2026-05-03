@@ -142,7 +142,7 @@ npm run dev
 
 ```
 DATABASE_URL=postgresql://user:password@localhost:5432/team-task
-JWT_SECRET=your_long_random_secret
+JWT_SECRET= secret_key
 NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 PORT=5000
@@ -172,4 +172,4 @@ Member:
 
 ## Live Demo
 
-https://your-railway-url.up.railway.app
+https://task-manager-production-f3a3.up.railway.app/dashboard
