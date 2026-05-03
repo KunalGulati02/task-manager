@@ -210,15 +210,21 @@ export default function ProjectDetail() {
                         </td>
                         <td>{task.assignee_name || 'Unassigned'}</td>
                         <td>
-                          <select
-                            className="status-select"
-                            value={task.status}
-                            onChange={e => handleStatusChange(task.id, e.target.value)}
-                          >
-                            <option value="Todo">To-do</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Done">Done</option>
-                          </select>
+                          {user?.role === 'admin' || task.assigned_to === parseInt(user?.id) ? (
+                            <select
+                              className="status-select"
+                              value={task.status}
+                              onChange={e => handleStatusChange(task.id, e.target.value)}
+                            >
+                              <option value="Todo">To-do</option>
+                              <option value="In Progress">In Progress</option>
+                              <option value="Done">Done</option>
+                            </select>
+                          ) : (
+                            <span className={`badge ${task.status === 'Done' ? 'badge-green' : task.status === 'In Progress' ? 'badge-blue' : 'badge-gray'}`}>
+                              {task.status === 'Todo' ? 'To-do' : task.status}
+                            </span>
+                          )}
                         </td>
                         <td>{task.due_date ? new Date(task.due_date).toLocaleDateString() : '-'}</td>
                         <td>
